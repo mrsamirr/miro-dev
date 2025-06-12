@@ -4,7 +4,6 @@ import { Suspense } from "react";
 
 import { Loading } from "@/components/auth/loading";
 import { Toaster } from "@/components/ui/sonner";
-import { siteConfig } from "@/config";
 import { ConvexClientProvider } from "@/providers/convex-client-provider";
 import { ModalProvider } from "@/providers/modal-provider";
 
@@ -12,8 +11,14 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = siteConfig;
-
+export const metadata: Metadata = {
+  title: "Miro Clone",
+  description: "A collaborative online whiteboard platform.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+};
 export const viewport: Viewport = {
   themeColor: "#fff",
 };
@@ -28,7 +33,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Suspense fallback={<Loading />}>
           <ConvexClientProvider>
-            <Toaster theme="light" closeButton richColors />
+            <Toaster theme="dark" closeButton richColors />
             <ModalProvider />
             {children}
           </ConvexClientProvider>
